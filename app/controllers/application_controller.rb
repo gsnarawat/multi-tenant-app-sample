@@ -9,10 +9,10 @@ class ApplicationController < ActionController::Base
     attr_reader :current_tenant
 
     def with_tenant
-      @current_tenant = Tenant.find_by_host!(request.host)
-    if (!@current_tenant)
+
+     if(!@current_tenant = Tenant.find_by_host(request.host))
       render "no_such_tenant"
-    end
+     end
    end
   
 end
