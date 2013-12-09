@@ -7,6 +7,8 @@
           %li= msg
 
   .field
+    = f.number_field :tenant_id, :type=>"hidden", :value=>@current_tenant.id
+  .field
     = f.label :name
     = f.text_field :name
   .field
