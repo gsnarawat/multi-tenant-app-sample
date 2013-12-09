@@ -3,16 +3,16 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  around_filter :with_tenant
+  before_filter :with_tenant
 
   protected
     attr_reader :current_tenant
 
     def with_tenant
       @current_tenant = Tenant.find_by_host!(request.host)
-      @current_tenant.with { yield }
-    rescue ActiveRecord::RecordNotFound
+    if (!@current_tenant)
       render "no_such_tenant"
+    end
    end
   
 end
