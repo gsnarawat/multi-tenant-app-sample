@@ -1,0 +1,10 @@
+%h1 Home
+%p Welcome to the Simple Rails Multi-Tenant Application
+%p
+  You are using the
+  %b
+  = @current_tenant.name
+  tenant of this application.
+%p
+  View the 
+  =link_to "products for this tenant", products_path
